@@ -26,10 +26,8 @@ jobs:
           pip install allure-pytest
           sudo apt-get install -y libnss3 libgconf-2-4
           sudo apt-get install -y google-chrome-stable
-
           sudo apt-get update
-          sudo apt-get install -y unzip wget      
-          
+          sudo apt-get install -y unzip wget     
           pip install webdriver-manager
 
       - name: Run tests and generate Allure reports
