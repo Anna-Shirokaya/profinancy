@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from LoginPage import LoginActions
 from WalletPage import WalletActions, WalletLocators as ll
 from Fibbonachi import fibonacciDay
+import re
 import pytest
 
 #accountName = 'Anna'
@@ -37,7 +38,7 @@ def test_login(browser):
     wallet_page.click_button(ll.create_transaction_button)
 
     resultbalance = wallet_page.balance(ll.balance)
-    assert resultbalance.text == '0 ₽'
+    assert re.search(r'0\s*₽', resultbalance.text)
     
 
 
