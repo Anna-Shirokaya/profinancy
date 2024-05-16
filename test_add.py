@@ -38,7 +38,8 @@ def test_login(browser):
     wallet_page.click_button(ll.create_transaction_button)
 
     resultbalance = wallet_page.balance(ll.balance)
-    assert re.search(r'0\s*₽', resultbalance.text)
+    #assert re.search(r'0\s*₽', resultbalance.text)
+    assert '0' == resultbalance.text
     
 
 
