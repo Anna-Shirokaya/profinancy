@@ -38,7 +38,12 @@ jobs:
         run: |
           wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.16.0/allure-commandline-2.16.0.zip
           unzip allure-commandline-2.16.0.zip -d allure
-          export PATH=$PATH:/path/to/allure/bin
+          export PATH=$PATH:$(pwd)/allure/allure-2.16.0/bin
+        shell: bash
+      - name: Print PATH and current directory
+        run: |
+          echo $PATH
+          pwd
 
       - name: Generate Allure report
         run: |
