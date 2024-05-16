@@ -50,6 +50,7 @@ jobs:
         run: |
           allure generate reports --clean -o allure-report
         shell: bash
+        
 
       - name: Upload Allure report
         uses: actions/upload-artifact@v2
