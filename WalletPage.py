@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from conftest import browser
+import time
 
 class WalletLocators:
     create_account_button = (By.XPATH, '//button[span[text()="Создать счёт"]]')
@@ -56,4 +57,6 @@ class WalletActions(BasePage):
     def balance(self, locator):
         self.driver.refresh()
         wait = WebDriverWait(self.driver, 10)
-        return wait.until(EC.visibility_of_element_located((locator)))
+        balance = wait.until(EC.visibility_of_element_located((locator)))
+        time.sleep(1)
+        return balance
