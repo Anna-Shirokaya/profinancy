@@ -1,0 +1,46 @@
+name: Run Selenium Tests with Allure
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install selenium
+          pip install allure-pytest
+
+      - name: Run tests and generate Allure reports
+        run: |
+          pytest --alluredir=reports
+
+      - name: Install Allure CLI
+        run: |
+          wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.16.0/allure-commandline-2.16.0.zip
+          unzip allure-commandline-2.16.0.zip -d allure
+          export PATH=$PATH:/path/to/allure/bin
+
+      - name: Generate Allure report
+        run: |
+          allure generate reports --clean -o allure-report
+
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
+          path: allure-report
