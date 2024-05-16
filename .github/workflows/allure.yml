@@ -40,6 +40,7 @@ jobs:
           unzip allure-commandline-2.16.0.zip -d allure
           export PATH=$PATH:$(pwd)/allure/allure-2.16.0/bin
         shell: bash
+        
       - name: Print PATH and current directory
         run: |
           echo $PATH
@@ -48,6 +49,7 @@ jobs:
       - name: Generate Allure report
         run: |
           allure generate reports --clean -o allure-report
+        shell: bash
 
       - name: Upload Allure report
         uses: actions/upload-artifact@v2
