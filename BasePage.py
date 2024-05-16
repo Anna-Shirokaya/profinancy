@@ -17,5 +17,6 @@ class BasePage:
                                                       message=f"Can't find element by locator {locator}")
     def go_to_site(self):
         return self.driver.get(self.login_url)
+    #
         
         
