@@ -14,6 +14,7 @@ def browser():
     chrome_options.add_argument("--window-size=1920x1080")
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
+    #отключает все уведомления для сессии браузера
     prefs = {"profile.default_content_setting_values.notifications": 2}
     chrome_options.add_experimental_option("prefs", prefs)
 
